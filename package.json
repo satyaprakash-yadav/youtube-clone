@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev:all": "concurrently \"bun run dev:webhook\" \"bun run dev\"",
     "dev": "next dev --turbopack",
+    "dev:webhook": "ngrok http --url=healthy-wombat-completely.ngrok-free.app 3000",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
@@ -41,6 +43,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "concurrently": "9.2.1",
     "date-fns": "^4.1.0",
     "dotenv": "17.2.2",
     "drizzle-orm": "0.44.5",
@@ -56,6 +59,7 @@
     "react-resizable-panels": "^3.0.6",
     "recharts": "2.15.4",
     "sonner": "^2.0.7",
+    "svix": "1.76.1",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2",
     "zod": "^4.1.8"
