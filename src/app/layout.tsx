@@ -3,6 +3,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { TRPCProvider } from "@/trpc/client";
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { ourFileRouter } from "@/app/api/uploadthing/core";
+import { extractRouterConfig } from "uploadthing/server";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -24,6 +28,9 @@ export default function RootLayout({
         <body
           className={`${inter.className} antialiased`}
         >
+          <NextSSRPlugin
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
           <TRPCProvider>
             <Toaster />
             {children}
