@@ -18,7 +18,7 @@ interface VideoMenuProps {
 // TODO: impliment whats left
 export const VideoMenu = ({
     videoId,
-    variant,
+    variant = "ghost",
     onRemove,
 }: VideoMenuProps) => {
     const onShare = () => {
@@ -29,7 +29,7 @@ export const VideoMenu = ({
     };
 
     return (
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
                 <Button
                     variant={variant}
