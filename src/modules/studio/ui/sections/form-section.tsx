@@ -45,6 +45,7 @@ import Image from "next/image";
 import { THUMBNAIL_FALLBACK } from "@/modules/videos/constants";
 import { ThumbnailUploadModal } from "@/components/thumbnail-upload-modal";
 import { ThumbnailGenerateModal } from "@/components/thumbnail-generate-modal";
+import { APP_URL } from "@/constants";
 
 interface FormSectionProps {
     videoId: string;
@@ -204,8 +205,7 @@ export const FormSectionSuspense = ({ videoId }: FormSectionProps) => {
         update.mutate(data);
     };
 
-    // TODO: Change if deploying outside of VERCEL
-    const fullUrl = `${process.env.VERCEL_URL || "http://localhost:3000"}/videos/${videoId}`;
+    const fullUrl = `${APP_URL}/videos/${videoId}`;
     const [isCopied, setIsCopied] = useState(false);
 
     const onCopy = async () => {
