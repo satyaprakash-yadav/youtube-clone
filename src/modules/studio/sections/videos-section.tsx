@@ -1,14 +1,15 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { format } from "date-fns";
 import { Suspense } from "react";
 import { useRouter } from "next/navigation";
-import { format } from "date-fns";
 import { ErrorBoundary } from "react-error-boundary";
 
 import { trpc } from "@/trpc/client";
-import { snakeCaseToTitle } from "@/lib/utils";
 import { DEFAULT_LIMIT } from "@/constants";
 import { InfiniteScroll } from "@/components/infinite-scroll";
+import { snakeCaseToTitle } from "@/lib/utils";
 
 import {
     Table,
@@ -92,7 +93,7 @@ const VideosSectionSuspense = () => {
     const [videos, query] = trpc.studio.getMany.useSuspenseInfiniteQuery({
         limit: DEFAULT_LIMIT,
     }, {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
+        getNextPageParam: (lastPage: any) => lastPage.nextCursor,
     });
 
     const router = useRouter();
@@ -158,13 +159,13 @@ const VideosSectionSuspense = () => {
                                     {format(new Date(video.createdAt), "d MMM yyyy")}
                                 </TableCell>
                                 <TableCell className="text-right text-sm">
-                                    views
+                                    {video.viewCount}
                                 </TableCell>
                                 <TableCell className="text-right text-sm">
-                                    comments
+                                    {video.commentCount}
                                 </TableCell>
                                 <TableCell className="text-right text-sm pr-6">
-                                    likes
+                                    {video.likeCount}
                                 </TableCell>
                             </TableRow>
                         ))}
