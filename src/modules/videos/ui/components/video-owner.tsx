@@ -26,9 +26,6 @@ export const VideoOwner = ({
         fromVideoId: videoId,
     });
 
-    console.log(user.viewerSubscribed);
-    
-
     return (
         <div className="flex items-center sm:items-start justify-between sm:justify-start gap-3 min-w-0">
             <Link href={`/users/${user.id}`}>
