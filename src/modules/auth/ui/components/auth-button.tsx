@@ -1,6 +1,6 @@
 "use client";
 
-import { ClapperboardIcon, UserCircleIcon } from "lucide-react";
+import { ClapperboardIcon, UserCircleIcon, UserIcon } from "lucide-react";
 import {
     UserButton,
     SignInButton,
@@ -16,7 +16,11 @@ export const AuthButton = () => {
             <SignedIn>
                 <UserButton>
                     <UserButton.MenuItems>
-                        {/* TODO: Add user profile menu button */}
+                        <UserButton.Link
+                            label="My profile"
+                            href="/users/current"
+                            labelIcon={<UserIcon className="size-4" />}
+                        />
                         <UserButton.Link
                             label="Studio"
                             href="/studio"
