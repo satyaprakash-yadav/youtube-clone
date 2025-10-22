@@ -4,7 +4,7 @@ import { and, eq } from "drizzle-orm";
 
 import { serve } from "@upstash/workflow/nextjs";
 
-import { TITLE_SYSTEM_PROMPT } from "@/system_prompts";
+// import { TITLE_SYSTEM_PROMPT } from "@/system_prompts";
 import { UTApi } from "uploadthing/server";
 
 interface InputType {
